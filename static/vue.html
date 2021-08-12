@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>go vue</title>
+    <script src="static/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    Title is {{.Title}}<br>
+    Content is {{.Content}}<br>
+    Author is {{.Author}}
+
+    <div id="app" style="background-color: #25ff35;">
+        [[ message ]]
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            delimiters: ['[[', ']]'],
+            el: "#app",
+            data: {
+                message: 'I am {{.Author}} '
+            }
+        })
+    </script>
+</body>
+
+</html>
