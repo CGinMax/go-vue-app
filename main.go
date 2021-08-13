@@ -95,17 +95,17 @@ type News struct {
 
 func routeVue(w http.ResponseWriter, r *http.Request) {
 	news := News{Title: "Learn Go Vue", Content: "Hello go Vue", Author: "Cooper"}
-	t, err := template.ParseFiles("static/vue.html")
+	t, err := template.ParseFiles("webapp/index.html")
 	if err != nil {
 		log.Fatalln("parse file vue.html failed!", err)
 	}
-	t.ExecuteTemplate(w, "vue.html", news)
+	t.ExecuteTemplate(w, "index.html", news)
 }
 
 func main() {
 	http.HandleFunc("/", home)
 	http.HandleFunc("/vue", routeVue)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("webapp/static"))))
 	err := http.ListenAndServe(":19191", nil)
 	if err != nil {
 		log.Fatalln("listen 19191 error")
